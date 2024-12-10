@@ -39,7 +39,7 @@ clock = pygame.time.Clock()
 
 
 def handle_keys(plr):
-    """Функция обработки действий пользователя"""
+    """Функция обработки действий пользователя."""
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -56,14 +56,14 @@ def handle_keys(plr):
 
 
 def draw_rect(color, cords):
-    """draw a rectangle"""
+    """Draw a rectangle."""
     rect = pygame.Rect(cords[0], cords[1], GRID_SIZE, GRID_SIZE)
     pygame.draw.rect(screen, color, rect)
     pygame.draw.rect(screen, BORDER_COLOR, rect, 1)
 
 
 def draw_field(apples, snake):
-    """draw full game field"""
+    """Draw full game field."""
     for a in apples:
         draw_rect(APPLE_COLOR, a)
     for s in snake:
@@ -71,7 +71,7 @@ def draw_field(apples, snake):
 
 
 def main():
-    """main"""
+    """Main."""
     # Инициализация PyGame:
     pygame.init()
     # Тут нужно создать экземпляры классов.

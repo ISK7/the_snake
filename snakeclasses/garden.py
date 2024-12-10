@@ -1,24 +1,24 @@
-"""game map"""
 from random import randint
 
 
 class Garden:
+    """Game map."""
     apples = set()
     borders = (640, 480)
 
     @classmethod
     def set_borders(cls, borders):
-        """set borders"""
+        """Set borders."""
         cls.borders = borders
 
     @classmethod
     def get_borders(cls):
-        """get borders"""
+        """Get borders."""
         return cls.borders
 
     @classmethod
     def generate_apple(cls, blacklist):
-        """generate apple, that not lands in blacklis"""
+        """Generate apple, that not lands in blacklis."""
         while True:
             x = randint(0, cls.borders[0])
             y = randint(0, cls.borders[1])
@@ -28,20 +28,20 @@ class Garden:
 
     @classmethod
     def add_apple(cls, cords):
-        """adds apple to set"""
+        """Adds apple to set."""
         cls.apples.add(cords)
 
     @classmethod
     def is_apple_here(cls, cords):
-        """chekout if there apple in cords"""
+        """Chekout if there apple in cords."""
         return cords in cls.apples
 
     @classmethod
     def get_apples(cls):
-        """return all apples"""
+        """Return all apples."""
         return cls.apples
 
     @classmethod
     def clear(cls):
-        """clear field from apples"""
+        """Clear field from apples."""
         cls.apples.clear()
