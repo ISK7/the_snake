@@ -40,3 +40,8 @@ class Garden:
     def get_apples(cls):
         """return all apples"""
         return cls.apples
+
+    @classmethod
+    def clear(cls):
+        """clear field from apples"""
+        cls.apples.clear()

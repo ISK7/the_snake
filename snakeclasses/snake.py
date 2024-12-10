@@ -11,6 +11,7 @@ class Snake:
 
     def __init__(self, cords, len, direction, size=20):
         """constructor"""
+        self.__clear__()
         self.one_segment_size = size
         self.dirrection = direction
         for i in range(len):
@@ -32,7 +33,7 @@ class Snake:
 
     def move(self):
         """to the next sell"""
-        grdn = garden.garden
+        grdn = garden.Garden
         new_front = [self.sections[-1].get_cords()[0] + self.dirrection[0],
                      self.sections[-1].get_cords()[1] + self.dirrection[1]]
         """if snake move into border"""
@@ -56,3 +57,6 @@ class Snake:
     def get_sections(self):
         """returns all snace sections"""
         return self.sections
+
+    def __clear__(self):
+        self.sections.clear()

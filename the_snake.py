@@ -86,7 +86,8 @@ def main():
         if code == 1:
             gard.generate_apple(player.get_sections())
         if code == 0:
-            break
+            player = snake.Snake((15, 15), 3, LEFT, GRID_SIZE)
+            gard.clear()
         code = player.move()
         draw_field(gard.get_apples(), player.get_sections())
         handle_keys(player)
