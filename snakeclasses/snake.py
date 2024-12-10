@@ -4,12 +4,13 @@
 from snakeclasses import garden, section
 
 
-class snake:
+class Snake:
     sections = []
     one_segment_size = 20
     dirrection = (0, 0)
 
     def __init__(self, cords, len, direction, size=20):
+        """constructor"""
         self.one_segment_size = size
         self.dirrection = direction
         for i in range(len):
@@ -17,16 +18,20 @@ class snake:
                              cords[1] + direction[1] * (i - len)))
 
     def add_section(self, cords):
-        sect = section.section(cords, self.one_segment_size)
+        """ads new segment to snake"""
+        sect = section.Section(cords, self.one_segment_size)
         self.sections.append(sect)
 
     def change_dirrection(self, dir):
+        """changes dirrection of snake"""
         self.dirrection = dir
 
     def get_direction(self):
+        """retuns snake dirrection"""
         return self.dirrection
 
     def move(self):
+        """to the next sell"""
         grdn = garden.garden
         new_front = [self.sections[-1].get_cords()[0] + self.dirrection[0],
                      self.sections[-1].get_cords()[1] + self.dirrection[1]]
@@ -49,4 +54,5 @@ class snake:
         return 2
 
     def get_sections(self):
+        """returns all snace sections"""
         return self.sections

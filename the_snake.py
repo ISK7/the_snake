@@ -38,8 +38,8 @@ pygame.display.set_caption('Змейка')
 clock = pygame.time.Clock()
 
 
-# Функция обработки действий пользователя
 def handle_keys(plr):
+    """Функция обработки действий пользователя"""
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -56,12 +56,14 @@ def handle_keys(plr):
 
 
 def draw_rect(color, cords):
+    """draw a rectangle"""
     rect = pygame.Rect(cords[0], cords[1], GRID_SIZE, GRID_SIZE)
     pygame.draw.rect(screen, color, rect)
     pygame.draw.rect(screen, BORDER_COLOR, rect, 1)
 
 
 def draw_field(apples, snake):
+    """draw full game field"""
     for a in apples:
         draw_rect(APPLE_COLOR, a)
     for s in snake:
@@ -69,11 +71,12 @@ def draw_field(apples, snake):
 
 
 def main():
+    """main"""
     # Инициализация PyGame:
     pygame.init()
     # Тут нужно создать экземпляры классов.
-    player = snake.snake((15, 15), 3, LEFT, GRID_SIZE)
-    gard = garden.garden
+    player = snake.Snake((15, 15), 3, LEFT, GRID_SIZE)
+    gard = garden.Garden
     gard.set_borders((GRID_WIDTH, GRID_HEIGHT))
 
     while True:
