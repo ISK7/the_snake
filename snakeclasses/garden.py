@@ -3,7 +3,7 @@ from random import randint
 
 class Garden:
     """Game map."""
-    
+
     apples = set()
     borders = (640, 480)
 

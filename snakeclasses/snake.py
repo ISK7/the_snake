@@ -3,7 +3,7 @@ from snakeclasses import garden, section
 
 class Snake:
     """Full snake."""
-    
+
     sections = []
     one_segment_size = 20
     dirrection = (0, 0)

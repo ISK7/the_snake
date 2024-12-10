@@ -1,6 +1,6 @@
 class Section:
     """One section of snake."""
-    
+
     section_size = 20
     section_x = 0
     section_y = 0
