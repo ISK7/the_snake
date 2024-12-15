@@ -73,6 +73,11 @@ class Section(GameObject):
         self.section_y = cords[1]
 
 
+class Apple(GameObject):
+    """Apple"""
+    cords = [0, 0]
+
+
 class Garden(GameObject):
     """Game map."""
 
@@ -103,6 +108,11 @@ class Garden(GameObject):
     def add_apple(cls, cords):
         """Adds apple to set."""
         cls.apples.add(cords)
+
+    @classmethod
+    def dell_apple(cls, cords):
+        """Delets apple from the set"""
+        cls.apples.remove(cords)
 
     @classmethod
     def is_apple_here(cls, cords):
@@ -165,6 +175,7 @@ class Snake(GameObject):
         """If snake get apple."""
         if grdn.is_apple_here(tuple(new_front)):
             self.add_section(tuple(new_front))
+            grdn.dell_apple(tuple(new_front))
             return 1
         """Default case."""
         for i in range(len(self.sections) - 1):
