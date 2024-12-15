@@ -41,7 +41,12 @@ clock = pygame.time.Clock()
 class GameObject:
     """Plug for tests"""
 
-    attr = None
+    position = (0, 0)
+    body_color = BOARD_BACKGROUND_COLOR
+
+    def draw(self):
+        """Do nothing"""
+        ...
 
 
 class Section(GameObject):
@@ -77,6 +82,10 @@ class Apple(GameObject):
     """Apple"""
 
     cords = [0, 0]
+
+    def randomize_position(self):
+        """Do nothing"""
+        ...
 
 
 class Garden(GameObject):
@@ -135,14 +144,15 @@ class Snake(GameObject):
     """Full snake."""
 
     sections = []
+    positions = []
     one_segment_size = 20
-    dirrection = (0, 0)
+    direction = (0, 0)
 
     def __init__(self, cords=(15, 15), len=3, direction=RIGHT, size=20):
         """Constructor."""
         self.__clear__()
         self.one_segment_size = size
-        self.dirrection = direction
+        self.direction = direction
         for i in range(len):
             self.add_section((cords[0] + direction[0] * (i - len),
                              cords[1] + direction[1] * (i - len)))
@@ -152,19 +162,19 @@ class Snake(GameObject):
         sect = Section(cords, self.one_segment_size)
         self.sections.append(sect)
 
-    def change_dirrection(self, dir):
-        """Changes dirrection of snake."""
-        self.dirrection = dir
+    def update_direction(self, dir):
+        """Changes direction of snake."""
+        self.direction = dir
 
     def get_direction(self):
-        """Retuns snake dirrection."""
-        return self.dirrection
+        """Retuns snake direction."""
+        return self.direction
 
     def move(self):
         """To the next sell."""
         grdn = Garden
-        new_front = [self.sections[-1].get_cords()[0] + self.dirrection[0],
-                     self.sections[-1].get_cords()[1] + self.dirrection[1]]
+        new_front = [self.sections[-1].get_cords()[0] + self.direction[0],
+                     self.sections[-1].get_cords()[1] + self.direction[1]]
         """If snake move into border."""
         borders = grdn.get_borders()
         new_front[0] = new_front[0] % borders[0]
@@ -192,6 +202,14 @@ class Snake(GameObject):
         """Delete all sections"""
         self.sections.clear()
 
+    def get_head_position(self):
+        """Returns head position"""
+        return self.sections[-1].get_cords()
+
+    def reset(self):
+        """Resets snake attributes to default"""
+        self.__init__()
+
 
 def handle_keys(plr):
     """Функция обработки действий пользователя."""
@@ -201,13 +219,13 @@ def handle_keys(plr):
             raise SystemExit
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP and plr.get_direction() != DOWN:
-                plr.change_dirrection(UP)
+                plr.update_direction(UP)
             elif event.key == pygame.K_DOWN and plr.get_direction() != UP:
-                plr.change_dirrection(DOWN)
+                plr.update_direction(DOWN)
             elif event.key == pygame.K_LEFT and plr.get_direction() != RIGHT:
-                plr.change_dirrection(LEFT)
+                plr.update_direction(LEFT)
             elif event.key == pygame.K_RIGHT and plr.get_direction() != LEFT:
-                plr.change_dirrection(RIGHT)
+                plr.update_direction(RIGHT)
 
 
 def draw_rect(color, cords):
