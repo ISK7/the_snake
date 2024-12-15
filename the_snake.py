@@ -51,7 +51,7 @@ class Section(GameObject):
     section_x = 0
     section_y = 0
 
-    def __init__(self, cords, size=20):
+    def __init__(self, cords=(0, 0), size=20):
         """Constructor."""
         self.section_x = cords[0]
         self.section_y = cords[1]
@@ -138,7 +138,7 @@ class Snake(GameObject):
     one_segment_size = 20
     dirrection = (0, 0)
 
-    def __init__(self, cords, len, direction, size=20):
+    def __init__(self, cords=(15, 15), len=3, direction=RIGHT, size=20):
         """Constructor."""
         self.__clear__()
         self.one_segment_size = size
