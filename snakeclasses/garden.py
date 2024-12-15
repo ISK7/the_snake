@@ -1,7 +1,8 @@
 from random import randint
+from the_snake import GameObject
 
 
-class Garden:
+class Garden(GameObject):
     """Game map."""
 
     apples = set()

@@ -38,6 +38,12 @@ pygame.display.set_caption('Змейка')
 clock = pygame.time.Clock()
 
 
+class GameObject:
+    """Plug for tests"""
+
+    attr = None
+
+
 def handle_keys(plr):
     """Функция обработки действий пользователя."""
     for event in pygame.event.get():

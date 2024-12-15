@@ -1,4 +1,7 @@
-class Section:
+from the_snake import GameObject
+
+
+class Section(GameObject):
     """One section of snake."""
 
     section_size = 20

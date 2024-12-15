@@ -1,7 +1,8 @@
 from snakeclasses import garden, section
+from the_snake import GameObject
 
 
-class Snake:
+class Snake(GameObject):
     """Full snake."""
 
     sections = []
