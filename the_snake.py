@@ -75,7 +75,7 @@ class Section(GameObject):
 
 class Apple(GameObject):
     """Apple"""
-    
+
     cords = [0, 0]
 
 
